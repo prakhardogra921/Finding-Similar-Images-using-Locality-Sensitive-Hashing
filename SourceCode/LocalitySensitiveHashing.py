@@ -87,10 +87,15 @@ sig_size = 100
 a = np.random.randint(low = -100000, high = 100000, size = sig_size)
 b = np.random.randint(low = -100000, high = 100000, size = sig_size)
 
-for k in range(N):
-    if sympy.isprime(k+N+1):
-        p = k+N+1
+even_odd = 2                        #if shingle space is of odd order
+if N % 2 == 0:                      #if shingle space is of even order
+    even_odd = 1
+
+for k in range(N + even_odd, 2*N, 2):
+    if sympy.isprime(k):
+        p = k
         break
+
 
 MAX = sys.maxsize
 
